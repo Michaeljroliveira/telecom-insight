@@ -7,7 +7,7 @@ export default async function Home() {
   const { data: tecnicos, error } = await supabase
     .from("tecnicos")
     .select("*")
-    
+    .eq("ativo", true)
     .order("nome");
 
   return (
