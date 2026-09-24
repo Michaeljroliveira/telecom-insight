@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Telecom Insight — Wireframes</title>
+<style>
+  :root {
+    --azul: #0026FF;
+    --azul-escuro: #001BB3;
+    --amarelo: #FFD400;
+    --verde: #16A34A;
+    --vermelho: #DC2626;
+    --laranja: #EA580C;
+    --cinza-100: #F3F4F6;
+    --cinza-200: #E5E7EB;
+    --cinza-500: #6B7280;
+    --cinza-700: #374151;
+    --cinza-900: #111827;
+    --dark-bg: #0F172A;
+    --dark-card: #1E293B;
+    --dark-border: #334155;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #F9FAFB;
+    color: var(--cinza-900);
+    line-height: 1.5;
+  }
+
+  body.dark {
+    background: var(--dark-bg);
+    color: #F1F5F9;
+  }
+
+  /* NAVBAR DE WIREFRAMES */
+  .wf-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-bottom: 1px solid var(--cinza-200);
+    padding: 12px 24px;
+    z-index: 1000;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+
+  body.dark .wf-nav {
+    background: var(--dark-card);
+    border-color: var(--dark-border);
+  }
+
+  .wf-nav button {
+    padding: 8px 16px;
+    border: 1px solid var(--cinza-200);
+    background: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--cinza-700);
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+
+  body.dark .wf-nav button {
+    background: var(--dark-bg);
+    border-color: var(--dark-border);
+    color: #CBD5E1;
+  }
+
+  .wf-nav button:hover {
+    border-color: var(--azul);
+    color: var(--azul);
+  }
+
+  .wf-nav button.active {
+    background: var(--azul);
+    color: white;
+    border-color: var(--azul);
+  }
+
+  .wf-toggle {
+    margin-left: auto;
+    background: var(--cinza-100);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* TELAS */
+  .screen {
+    display: none;
+    padding: 80px 24px 40px;
+    min-height: 100vh;
+  }
+
+  .screen.active { display: block; }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .screen-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .screen-subtitle {
+    color: var(--cinza-500);
+    margin-bottom: 32px;
+  }
+
+  /* LOGIN */
+  .login-wrap {
+    max-width: 420px;
+    margin: 80px auto;
+    background: white;
+    padding: 48px;
+    border-radius: 16px;
+    border: 1px solid var(--cinza-200);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+
+  body.dark .login-wrap {
+    background: var(--dark-card);
+    border-color: var(--dark-border);
+  }
+
+  .login-logo {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--azul);
+    margin-bottom: 8px;
+  }
+
+  .login-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 32px;
+  }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--cinza-700);
+  }
+
+  body.dark .form-label { color: #CBD5E1; }
+
+  .form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--cinza-200);
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    font-family: inherit;
+  }
+
+  body.dark .form-input {
+    background: var(--dark-bg);
+    border-color: var(--dark-border);
+    color: #F1F5F9;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px rgba(0,38,255,0.1);
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 14px;
+    background: var(--azul);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--azul-escuro); }
+
+  .link {
+    color: var(--azul);
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .link:hover { text-decoration: underline; }
+
+  .login-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--cinza-500);
+  }
+
+  /* SIDEBAR + LAYOUT APP */
+  .app-layout {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .app-sidebar {
+    width: 240px;
+    background: white;
+    border-right: 1px solid var(--cinza-200);
+    padding: 24px 16px;
+    flex-shrink: 0;
+  }
+
+  body.dark .app-sidebar {
+    background: var(--dark-card);
+    border-color: var(--dark-border);
+  }
+
+  .sidebar-logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--azul);
+    padding: 0 12px 24px;
+    border-bottom: 1px solid var(--cinza-200);
+    margin-bottom: 16px;
+  }
+
+  body.dark .sidebar-logo { border-color: var(--dark-border); }
+
+  .sidebar-menu { list-style: none; }
+  .sidebar-menu li { margin-bottom: 4px; }
+
+  .sidebar-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    color: var(--cinza-700);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  body.dark .sidebar-menu a { color: #CBD5E1; }
+
+  .sidebar-menu a:hover {
+    background: var(--cinza-100);
+    color: var(--azul);
+  }
+
+  body.dark .sidebar-menu a:hover { background: var(--dark-bg); }
+
+  .sidebar-menu a.active {
+    background: rgba(0,38,255,0.1);
+    color: var(--azul);
+    font-weight: 700;
+  }
+
+  .app-main {
+    flex: 1;
+    padding: 24px 32px;
+    overflow-x: hidden;
+  }
+
+  .app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--cinza-200);
+  }
+
+  body.dark .app-header { border-color: var(--dark-border); }
+
+  .app-header-left h1 {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .app-header-left p {
+    color: var(--cinza-500);
+    font-size: 14px;
+    margin-top: 4px;
+  }
+
+  .app-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .user-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: var(--cinza-100);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  body.dark .user-badge { background: var(--dark-bg); }
+
+  .user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--azul);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  /* DATE NAV */
+  .date-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    background: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    border: 1px solid var(--cinza-200);
+  }
+
+  body.dark .date-nav {
+    background: var(--dark-card);
+    border-color: var(--dark-border);
+  }
+
+  .date-nav-center {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .date-nav button {
+    background: transparent;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--azul);
+    border-radius: 6px;
+  }
+
+  .date-nav button:hover { background: rgba(0,38,255,0.1); }
+
+  /* KPI CARDS */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .kpi-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--cinza-200);
+  }
+
+  body.dark .kpi-card {
+    background: var(--dark-card);
+    border-color: var(--dark-border);
+  }
+
+  .kpi-label {
+    font-size: 12px;
+    color: var(--cinza-500);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .kpi-value {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .kpi-sub {
+    font-size: 12px;
+    color: var(--cinza-500);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .kpi-sub.ok { color: var(--verde); font-weight: 600; }
+  .kpi-sub.warn { color: var(--laranja); font-weight: 600; }
+  .kpi-sub.crit { color: var(--vermelho); font-weight: 600; }
+
+  .kpi-value.azul { color: var(--azul); }
+  .kpi-value.verde { color: var(--verde); }
+  .kpi-value.vermelho { color: var(--vermelho); }
+  .kpi-value.laranja { color: var(--laranja); }
+  .kpi-value.amarelo { color: #CA8A04; }
+
+  /* SECTIONS */
+  .panel {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--cinza-200);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
+
+  body.dark .panel {
+    background: var(--dark-card);
+    border-color: var(--dark-border);
+  }
+
+  .panel-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .panel-title-sub {
+    font-size: 12px;
+    color: var(--cinza-500);
+    font-weight: 500;
+  }
+
+  /* CHARTS (placeholder) */
+  .chart-placeholder {
+    height: 220px;
+    background: linear-gradient(180deg, rgba(0,38,255,0.05) 0%, rgba(0,38,255,0.15) 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 20px;
+    gap: 6px;
+    border: 1px dashed rgba(0,38,255,0.3);
+    position: relative;
+  }
+
+  .chart-bar {
+    flex: 1;
+    background: var(--azul);
+    border-radius: 4px 4px 0 0;
+    opacity: 0.7;
+    min-height: 20px;
+  }
+
+  .chart-bar.alerta { background: var(--vermelho); opacity: 0.85; }
+
+  .chart-label {
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: var(--cinza-500);
+    font-weight: 600;
+  }
+
+  /* ALERTAS */
+  .alert-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .alert-item.crit {
+    background: #FEF2F2;
+    border-left: 4px solid var(--vermelho);
+  }
+
+  .alert-item.warn {
+    background: #FFF7ED;
+    border-left: 4px solid var(--laranja);
+  }
+
+  .alert-item.ok {
+    background: #F0FDF4;
+    border-left: 4px solid var(--verde);
+  }
+
+  body.dark .alert-item.crit { background: rgba(220,38,38,0.15); }
+  body.dark .alert-item.warn { background: rgba(234,88,12,0.15); }
+  body.dark .alert-item.ok { background: rgba(22,163,74,0.15); }
+
+  .alert-icon { font-size: 20px; }
+
+  .alert-text { flex: 1; }
+
+  .alert-action {
+    background: var(--azul);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  /* TWO COLUMNS */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  /* TABELAS */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  .data-table th {
+    text-align: left;
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--cinza-500);
+    border-bottom: 1px solid var(--cinza-200);
+  }
+
+  body.dark .data-table th { border-color: var(--dark-border); }
+
+  .data-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--cinza-100);
+  }
+
+  body.dark .data-table td { border-color: var(--dark-border); }
+
+  .data-table tr:hover td { background: var(--cinza-100); }
+  body.dark .data-table tr:hover td { background: rgba(255,255,255,0.03); }
+
+  .badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .badge.verde { background: #DCFCE7; color: #166534; }
+  .badge.vermelho { background: #FEE2E2; color: #991B1B; }
+  .badge.laranja { background: #FFEDD5; color: #9A3412; }
+  .badge.azul { background: #DBEAFE; color: #1E40AF; }
+  .badge.cinza { background: var(--cinza-100); color: var(--cinza-700); }
+
+  /* UPLOAD */
+  .upload-zone {
+    border: 2px dashed var(--cinza-200);
+    border-radius: 12px;
+    padding: 48px 24px;
+    text-align: center;
+    background: var(--cinza-100);
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-bottom: 24px;
+  }
+
+  body.dark .upload-zone {
+    background: var(--dark-bg);
+    border-color: var(--dark-border);
+  }
+
+  .upload-zone:hover {
+    border-color: var(--azul);
+    background: rgba(0,38,255,0.02);
+  }
+
+  .upload-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+  }
+
+  .upload-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+
+  .upload-sub {
+    font-size: 13px;
+    color: var(--cinza-500);
+  }
+
+  .radio-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid var(--cinza-200);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    background: white;
+  }
+
+  body.dark .radio-option {
+    background: var(--dark-card);
+    border-color: var(--dark-border);
+  }
+
+  .radio-option.active {
+    border-color: var(--azul);
+    background: rgba(0,38,255,0.05);
+    color: var(--azul);
+  }
+
+  /* PASSWORD STRENGTH */
+  .pwd-rules {
+    background: var(--cinza-100);
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+
+  body.dark .pwd-rules { background: var(--dark-bg); }
+
+  .pwd-rules li {
+    list-style: none;
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cinza-500);
+  }
+
+  .pwd-rules li.ok { color: var(--verde); font-weight: 600; }
+
+  /* METRIC BARS */
+  .metric-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+
+  .metric-bar-label {
+    min-width: 140px;
+    color: var(--cinza-500);
+    font-weight: 600;
+  }
+
+  .metric-bar-track {
+    flex: 1;
+    height: 8px;
+    background: var(--cinza-200);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  body.dark .metric-bar-track { background: var(--dark-border); }
+
+  .metric-bar-fill {
+    height: 100%;
+    background: var(--verde);
+    border-radius: 999px;
+  }
+
+  .metric-bar-fill.warn { background: var(--laranja); }
+  .metric-bar-fill.crit { background: var(--vermelho); }
+
+  .metric-bar-value {
+    min-width: 50px;
+    text-align: right;
+    font-weight: 700;
+  }
+
+  /* PERFIL HEADER */
+  .profile-header {
+    background: linear-gradient(135deg, var(--azul) 0%, var(--azul-escuro) 100%);
+    color: white;
+    padding: 32px;
+    border-radius: 16px;
+    margin-bottom: 24px;
+  }
+
+  .profile-header h2 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .profile-header p {
+    opacity: 0.85;
+    font-size: 14px;
+  }
+
+  .profile-badges {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .profile-badges .badge {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  /* STAR RATING */
+  .stars {
+    color: var(--amarelo);
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .app-sidebar { display: none; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .two-col { grid-template-columns: 1fr; }
+  }
+
+  /* RESPONSIVE NAV */
+  @media (max-width: 640px) {
+    .wf-nav { padding: 8px 12px; gap: 6px; }
+    .wf-nav button { padding: 6px 10px; font-size: 12px; }
+    .app-main { padding: 16px; }
+    .kpi-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR DE WIREFRAMES -->
+<div class="wf-nav">
+  <button class="active" onclick="showScreen('tela1', this)">🔐 Login</button>
+  <button onclick="showScreen('tela2', this)">🔑 Onboarding</button>
+  <button onclick="showScreen('tela3', this)">📊 Dashboard</button>
+  <button onclick="showScreen('tela4', this)">📈 Análise</button>
+  <button onclick="showScreen('tela5', this)">👤 Perfil</button>
+  <button onclick="showScreen('tela6', this)">🚨 Alertas</button>
+  <button onclick="showScreen('tela7', this)">📤 Upload</button>
+  <button onclick="showScreen('tela8', this)">⚙️ Admin</button>
+  <button class="wf-toggle" onclick="toggleDark()">🌙 Dark</button>
+</div>
+
+<!-- ============================================ -->
+<!-- TELA 1: LOGIN                                 -->
+<!-- ============================================ -->
+<div class="screen active" id="tela1">
+  <div class="login-wrap">
+    <div class="login-logo">📡 TELECOM INSIGHT</div>
+    <h2 class="login-title">Iniciar sessão</h2>
+
+    <div class="form-group">
+      <label class="form-label">Email</label>
+      <input type="email" class="form-input" placeholder="nome@empresa.pt">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Senha</label>
+      <input type="password" class="form-input" placeholder="••••••••">
+    </div>
+
+    <button class="btn-primary">Entrar</button>
+
+    <div class="login-footer">
+      <span class="link">Esqueci-me da senha</span>
+      <br><br>
+      <span style="color: var(--cinza-500);">Acesso restrito a supervisores autorizados</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- TELA 2: ONBOARDING (primeiro acesso)          -->
+<!-- ============================================ -->
+<div class="screen" id="tela2">
+  <div class="login-wrap">
+    <div class="login-logo">📡 TELECOM INSIGHT</div>
+    <h2 class="login-title">Primeiro acesso — Definir senha</h2>
+
+    <div style="background: #FFF7ED; border-left: 4px solid var(--laranja); padding: 12px 16px; border-radius: 8px; font-size: 13px; margin-bottom: 24px;">
+      ⚠️ Esta é a sua primeira sessão. Por motivos de segurança, deve definir uma senha pessoal antes de continuar.
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Nova senha</label>
+      <input type="password" class="form-input" placeholder="••••••••">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Confirmar senha</label>
+      <input type="password" class="form-input" placeholder="••••••••">
+    </div>
+
+    <div class="pwd-rules">
+      <strong style="display: block; margin-bottom: 8px; font-size: 12px; color: var(--cinza-700);">Requisitos da senha:</strong>
+      <li class="ok">✓ Mínimo 12 caracteres</li>
+      <li class="ok">✓ Pelo menos 1 letra maiúscula</li>
+      <li class="ok">✓ Pelo menos 1 número</li>
+      <li>○ Pelo menos 1 símbolo (!@#$%)</li>
+      <li>○ Diferente da senha temporária</li>
+    </div>
+
+    <button class="btn-primary" style="margin-top: 24px;">Guardar e entrar</button>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- TELA 3: DASHBOARD DIÁRIO                      -->
+<!-- ============================================ -->
+<div class="screen" id="tela3">
+  <div class="app-layout">
+    <aside class="app-sidebar">
+      <div class="sidebar-logo">📡 TELECOM</div>
+      <ul class="sidebar-menu">
+        <li><a class="active">📊 Dashboard</a></li>
+        <li><a>📈 Análise</a></li>
+        <li><a>👤 Técnicos</a></li>
+        <li><a>🚨 Alertas <span class="badge vermelho" style="margin-left:auto;">2</span></a></li>
+        <li><a>📤 Upload</a></li>
+        <li><a>⚙️ Admin</a></li>
+      </ul>
+    </aside>
+
+    <main class="app-main">
+      <div class="app-header">
+        <div class="app-header-left">
+          <h1>Dashboard Diário</h1>
+          <p>Visão geral da operação</p>
+        </div>
+        <div class="app-header-right">
+          <div class="user-badge">
+            <div class="user-avatar">MR</div>
+            <span>Michael R.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="date-nav">
+        <button>◀ Anterior</button>
+        <div class="date-nav-center">📅 Segunda-feira, 22 de Setembro de 2026</div>
+        <button>Próximo ▶</button>
+      </div>
+
+      <!-- KPIs do dia -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">📋 Agendadas</div>
+          <div class="kpi-value azul">92</div>
+          <div class="kpi-sub">do export da manhã</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">✅ Executadas</div>
+          <div class="kpi-value verde">78</div>
+          <div class="kpi-sub ok">✓ 85% de sucesso</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">⚠️ Falhadas</div>
+          <div class="kpi-value laranja">8</div>
+          <div class="kpi-sub warn">Necessitam justificação</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">🔄 Reagendadas</div>
+          <div class="kpi-value azul">6</div>
+          <div class="kpi-sub">Novo agendamento criado</div>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">🚫 Desaparecidas</div>
+          <div class="kpi-value vermelho">2</div>
+          <div class="kpi-sub crit">⚠️ Justificação urgente</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">🔴 Reincidência</div>
+          <div class="kpi-value laranja">4.2%</div>
+          <div class="kpi-sub warn">↑ +0.8% vs ontem</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">📊 SLA cumprido</div>
+          <div class="kpi-value verde">91%</div>
+          <div class="kpi-sub ok">✓ Meta: 90%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">💰 Potencial</div>
+          <div class="kpi-value azul">€ 340</div>
+          <div class="kpi-sub">Do dia atual</div>
+        </div>
+      </div>
+
+      <!-- Gráfico -->
+      <div class="panel">
+        <div class="panel-title">
+          📈 Evolução do Backlog
+          <span class="panel-title-sub">Últimos 30 dias</span>
+        </div>
+        <div class="chart-placeholder">
+          <div class="chart-bar" style="height: 40%"></div>
+          <div class="chart-bar" style="height: 55%"></div>
+          <div class="chart-bar" style="height: 35%"></div>
+          <div class="chart-bar" style="height: 65%"></div>
+          <div class="chart-bar" style="height: 48%"></div>
+          <div class="chart-bar" style="height: 72%"></div>
+          <div class="chart-bar alerta" style="height: 85%"></div>
+          <div class="chart-bar" style="height: 60%"></div>
+          <div class="chart-bar" style="height: 52%"></div>
+          <div class="chart-bar alerta" style="height: 78%"></div>
+          <div class="chart-bar" style="height: 45%"></div>
+          <div class="chart-bar" style="height: 38%"></div>
+          <div class="chart-bar" style="height: 50%"></div>
+          <div class="chart-bar" style="height: 42%"></div>
+          <div class="chart-bar" style="height: 30%"></div>
+          <div class="chart-bar" style="height: 28%"></div>
+          <div class="chart-bar" style="height: 25%"></div>
+          <div class="chart-bar" style="height: 35%"></div>
+          <div class="chart-bar" style="height: 40%"></div>
+          <div class="chart-bar" style="height: 32%"></div>
+          <div class="chart-bar" style="height: 28%"></div>
+          <div class="chart-bar" style="height: 22%"></div>
+          <div class="chart-bar" style="height: 30%"></div>
+          <div class="chart-bar" style="height: 35%"></div>
+          <div class="chart-bar" style="height: 28%"></div>
+          <div class="chart-bar" style="height: 20%"></div>
+          <div class="chart-bar" style="height: 25%"></div>
+          <div class="chart-bar" style="height: 18%"></div>
+          <div class="chart-bar" style="height: 22%"></div>
+          <div class="chart-bar" style="height: 15%"></div>
+          <div class="chart-label">Abertos vs Fechados por dia</div>
+        </div>
+      </div>
+
+      <!-- Duas colunas: OS a justificar + Top técnicos -->
+      <div class="two-col">
+        <div class="panel">
+          <div class="panel-title">
+            🚨 OS a Justificar
+            <span class="badge vermelho">2 pendentes</span>
+          </div>
+
+          <div class="alert-item crit">
+            <div class="alert-icon">🚫</div>
+            <div class="alert-text">
+              <strong>ID 178945</strong> — Desapareceu do sistema<br>
+              <span style="font-size: 12px; color: var(--cinza-500);">Estava agendada para hoje · Técnico: Bruno L.</span>
+            </div>
+            <button class="alert-action">Justificar</button>
+          </div>
+
+          <div class="alert-item warn">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-text">
+              <strong>ID 178912</strong> — Falha de instalação<br>
+              <span style="font-size: 12px; color: var(--cinza-500);">Técnico: Cleomar A. · Aguarda análise</span>
+            </div>
+            <button class="alert-action">Justificar</button>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">🏆 Top Técnicos Hoje</div>
+
+          <table class="data-table">
+            <tr>
+              <td style="width: 40px;"><strong>1º</strong></td>
+              <td>Bruno Loureiro</td>
+              <td style="text-align: right;"><strong>6</strong> trab</td>
+              <td style="text-align: right;"><span class="badge verde">100%</span></td>
+            </tr>
+            <tr>
+              <td><strong>2º</strong></td>
+              <td>Cleomar Alves</td>
+              <td style="text-align: right;"><strong>5</strong> trab</td>
+              <td style="text-align: right;"><span class="badge verde">95%</span></td>
+            </tr>
+            <tr>
+              <td><strong>3º</strong></td>
+              <td>Diogo Oliveira</td>
+              <td style="text-align: right;"><strong>5</strong> trab</td>
+              <td style="text-align: right;"><span class="badge verde">92%</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+<!-- ============================================ -->
+<!-- TELA 4: ANÁLISE SEMANAL/MENSAL                -->
+<!-- ============================================ -->
+<div class="screen" id="tela4">
+  <div class="app-layout">
+    <aside class="app-sidebar">
+      <div class="sidebar-logo">📡 TELECOM</div>
+      <ul class="sidebar-menu">
+        <li><a>📊 Dashboard</a></li>
+        <li><a class="active">📈 Análise</a></li>
+        <li><a>👤 Técnicos</a></li>
+        <li><a>🚨 Alertas</a></li>
+        <li><a>📤 Upload</a></li>
+        <li><a>⚙️ Admin</a></li>
+      </ul>
+    </aside>
+
+    <main class="app-main">
+      <div class="app-header">
+        <div class="app-header-left">
+          <h1>Análise de Período</h1>
+          <p>Evolução semanal e mensal da operação</p>
+        </div>
+        <div class="app-header-right">
+          <div class="user-badge">
+            <div class="user-avatar">MR</div>
+            <span>Michael R.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="radio-group">
+        <div class="radio-option active">📅 Semana</div>
+        <div class="radio-option">📆 Mês</div>
+        <div class="radio-option">🗓️ Trimestre</div>
+        <div class="radio-option">📊 Ano</div>
+      </div>
+
+      <div class="date-nav">
+        <button>◀ Anterior</button>
+        <div class="date-nav-center">15 Set — 21 Set 2026</div>
+        <button>Próximo ▶</button>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">📊 Instalações</div>
+          <div class="kpi-value azul">520</div>
+          <div class="kpi-sub ok">↑ +8.3% vs semana anterior</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">🔴 Reincidência</div>
+          <div class="kpi-value laranja">3.8%</div>
+          <div class="kpi-sub warn">⚠️ Meta &lt; 3%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">📈 SLA Global</div>
+          <div class="kpi-value verde">93%</div>
+          <div class="kpi-sub ok">✓ Acima da meta</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">⚠️ Alertas</div>
+          <div class="kpi-value laranja">6</div>
+          <div class="kpi-sub">3 técnicos · 2 zonas · 1 OS</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">
+          📈 Instalações por Dia
+          <span class="panel-title-sub">520 total na semana</span>
+        </div>
+        <div class="chart-placeholder">
+          <div class="chart-bar" style="height: 65%"></div>
+          <div class="chart-bar" style="height: 72%"></div>
+          <div class="chart-bar" style="height: 80%"></div>
+          <div class="chart-bar" style="height: 88%"></div>
+          <div class="chart-bar" style="height: 95%"></div>
+          <div class="chart-bar" style="height: 55%"></div>
+          <div class="chart-bar" style="height: 30%"></div>
+          <div class="chart-label">Seg · Ter · Qua · Qui · Sex · Sáb · Dom</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <div class="panel-title">📍 Por Província</div>
+          <table class="data-table">
+            <tr>
+              <td>Setúbal</td>
+              <td style="text-align: right;"><strong>320</strong></td>
+              <td style="text-align: right;"><span class="badge azul">61%</span></td>
+            </tr>
+            <tr>
+              <td>Lisboa</td>
+              <td style="text-align: right;"><strong>200</strong></td>
+              <td style="text-align: right;"><span class="badge azul">39%</span></td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">🏆 Ranking Semanal</div>
+          <table class="data-table">
+            <tr>
+              <td><strong>1º</strong> Bruno Loureiro</td>
+              <td style="text-align: right;"><strong>145</strong></td>
+              <td style="text-align: right;"><span class="badge verde">⭐</span></td>
+            </tr>
+            <tr>
+              <td><strong>2º</strong> Cleomar Alves</td>
+              <td style="text-align: right;"><strong>89</strong></td>
+              <td style="text-align: right;"><span class="badge verde">✓</span></td>
+            </tr>
+            <tr>
+              <td><strong>3º</strong> Diogo Oliveira</td>
+              <td style="text-align: right;"><strong>45</strong></td>
+              <td style="text-align: right;"><span class="badge verde">✓</span></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">⚠️ Alertas da Semana</div>
+
+        <div class="alert-item crit">
+          <div class="alert-icon">🔴</div>
+          <div class="alert-text"><strong>Carlos M.</strong> — 3 critérios atingidos · relatório completo disponível</div>
+          <button class="alert-action">Ver análise</button>
+        </div>
+
+        <div class="alert-item warn">
+          <div class="alert-icon">🟠</div>
+          <div class="alert-text"><strong>Joana S.</strong> — Reincidência 4.1% (meta &lt;3%)</div>
+          <button class="alert-action">Ver análise</button>
+        </div>
+
+        <div class="alert-item warn">
+          <div class="alert-icon">🟠</div>
+          <div class="alert-text"><strong>Bairro Bela Vista, Setúbal</strong> — 7 avarias repetidas nos últimos 7 dias</div>
+          <button class="alert-action">Ver análise</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- TELA 5: PERFIL DO TÉCNICO                     -->
+<!-- ============================================ -->
+<div class="screen" id="tela5">
+  <div class="app-layout">
+    <aside class="app-sidebar">
+      <div class="sidebar-logo">📡 TELECOM</div>
+      <ul class="sidebar-menu">
+        <li><a>📊 Dashboard</a></li>
+        <li><a>📈 Análise</a></li>
+        <li><a class="active">👤 Técnicos</a></li>
+        <li><a>🚨 Alertas</a></li>
+        <li><a>📤 Upload</a></li>
+        <li><a>⚙️ Admin</a></li>
+      </ul>
+    </aside>
+
+    <main class="app-main">
+      <div class="app-header">
+        <div class="app-header-left">
+          <h1>Perfil do Técnico</h1>
+          <p>Histórico completo e análise de desempenho</p>
+        </div>
+        <div class="app-header-right">
+          <button style="background: white; border: 1px solid var(--cinza-200); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;">📄 Exportar PDF</button>
+          <div class="user-badge">
+            <div class="user-avatar">MR</div>
+            <span>Michael R.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-header">
+        <h2>Bruno Loureiro</h2>
+        <p>bruno.loureiro@digi.pt · Supervisor: Michael R.</p>
+        <div class="profile-badges">
+          <span class="badge">✓ Efetivo desde Jan 2024</span>
+          <span class="badge">📊 Média 5.8 instalações/dia</span>
+          <span class="badge">🟢 Estado: Excelente</span>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-label">📊 Total Instalações</div>
+          <div class="kpi-value azul">1.245</div>
+          <div class="kpi-sub">Nos últimos 12 meses</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">🔄 Reincidência</div>
+          <div class="kpi-value verde">2.1%</div>
+          <div class="kpi-sub ok">✓ Meta &lt; 3%</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">📈 SLA Médio</div>
+          <div class="kpi-value verde">96%</div>
+          <div class="kpi-sub ok">✓ Excelente</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">⭐ Avaliação</div>
+          <div class="kpi-value amarelo">4.8</div>
+          <div class="kpi-sub">Do supervisor</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">
+          📈 Evolução Mensal
+          <span class="panel-title-sub">Últimos 12 meses</span>
+        </div>
+        <div class="chart-placeholder">
+          <div class="chart-bar" style="height: 60%"></div>
+          <div class="chart-bar" style="height: 65%"></div>
+          <div class="chart-bar" style="height: 70%"></div>
+          <div class="chart-bar" style="height: 72%"></div>
+          <div class="chart-bar" style="height: 78%"></div>
+          <div class="chart-bar" style="height: 82%"></div>
+          <div class="chart-bar" style="height: 85%"></div>
+          <div class="chart-bar" style="height: 88%"></div>
+          <div class="chart-bar" style="height: 90%"></div>
+          <div class="chart-bar" style="height: 92%"></div>
+          <div class="chart-bar" style="height: 95%"></div>
+          <div class="chart-bar" style="height: 98%"></div>
+          <div class="chart-label">Out · Nov · Dez · Jan · Fev · Mar · Abr · Mai · Jun · Jul · Ago · Set</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <div class="panel-title">📅 Últimos 10 dias</div>
+          <table class="data-table">
+            <tr><td>22 Set</td><td style="text-align: right;"><strong>6</strong> ✅</td></tr>
+            <tr><td>21 Set</td><td style="text-align: right;"><strong>5</strong> ✅</td></tr>
+            <tr><td>20 Set</td><td style="text-align: right;"><strong>7</strong> ✅</td></tr>
+            <tr><td>19 Set</td><td style="text-align: right;"><strong>4</strong> ✅</td></tr>
+            <tr><td>18 Set</td><td style="text-align: right;"><strong>6</strong> ✅</td></tr>
+          </table>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">🔴 Reincidências Recentes</div>
+          <div class="alert-item warn">
+            <div class="alert-icon">🏠</div>
+            <div class="alert-text">
+              <strong>Cliente #4589</strong><br>
+              <span style="font-size: 12px; color: var(--cinza-500);">2 visitas em 30 dias · Código postal 2825</span>
+            </div>
+          </div>
+          <div class="alert-item warn">
+            <div class="alert-icon">🏠</div>
+            <div class="alert-text">
+              <strong>Cliente #4721</strong><br>
+              <span style="font-size: 12px; color: var(--cinza-500);">1 visita em 30 dias · Código postal 2820</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">⭐ Avaliação do Supervisor</div>
+
+        <div class="metric-bar">
+          <span class="metric-bar-label">Relação com equipa</span>
+          <div class="metric-bar-track"><div class="metric-bar-fill" style="width: 95%"></div></div>
+          <span class="metric-bar-value">4.8</span>
+        </div>
+        <div class="metric-bar">
+          <span class="metric-bar-label">Disponibilidade</span>
+          <div class="metric-bar-track"><div class="metric-bar-fill" style="width: 90%"></div></div>
+          <span class="metric-bar-value">4.5</span>
+        </div>
+        <div class="metric-bar">
+          <span class="metric-bar-label">Qualidade técnica</span>
+          <div class="metric-bar-track"><div class="metric-bar-fill" style="width: 100%"></div></div>
+          <span class="metric-bar-value">5.0</span>
+        </div>
+        <div class="metric-bar">
+          <span class="metric-bar-label">Produtividade</span>
+          <div class="metric-bar-track"><div class="metric-bar-fill" style="width: 98%"></div></div>
+          <span class="metric-bar-value">4.9</span>
+        </div>
+
+        <div style="margin-top: 20px; padding: 16px; background: #F0FDF4; border-radius: 8px; border-left: 4px solid var(--verde);">
+          <strong style="color: var(--verde);">✅ Recomendação: RENOVAR</strong>
+          <p style="font-size: 13px; margin-top: 4px; color: var(--cinza-700);">Técnico exemplar em todos os critérios. Manter no quadro.</p>
+        </div>
+
+        <button style="margin-top: 16px; background: white; border: 1px solid var(--cinza-200); padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer;">✏️ Editar avaliação</button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- TELA 6: ALERTAS                               -->
+<!-- ============================================ -->
+<div class="screen" id="tela6">
+  <div class="app-layout">
+    <aside class="app-sidebar">
+      <div class="sidebar-logo">📡 TELECOM</div>
+      <ul class="sidebar-menu">
+        <li><a>📊 Dashboard</a></li>
+        <li><a>📈 Análise</a></li>
+        <li><a>👤 Técnicos</a></li>
+        <li><a class="active">🚨 Alertas</a></li>
+        <li><a>📤 Upload</a></li>
+        <li><a>⚙️ Admin</a></li>
+      </ul>
+    </aside>
+
+    <main class="app-main">
+      <div class="app-header">
+        <div class="app-header-left">
+          <h1>Central de Alertas</h1>
+          <p>Casos críticos que precisam de ação</p>
+        </div>
+        <div class="app-header-right">
+          <div class="user-badge">
+            <div class="user-avatar">MR</div>
+            <span>Michael R.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">
+          🔴 Críticos — Ação imediata
+          <span class="badge vermelho">1</span>
+        </div>
+
+        <div class="alert-item crit">
+          <div class="alert-icon">🔴</div>
+          <div class="alert-text">
+            <strong>Carlos Moreira</strong> — 3 critérios atingidos<br>
+            <span style="font-size: 12px; color: var(--cinza-500);">8 dias &lt;3 instalações · Reincidência 5.2% · 3 avarias no mesmo local</span>
+          </div>
+          <button class="alert-action">Ver relatório</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">
+          🟠 Atenção — Monitorizar
+          <span class="badge laranja">3</span>
+        </div>
+
+        <div class="alert-item warn">
+          <div class="alert-icon">📊</div>
+          <div class="alert-text">
+            <strong>Joana Silva</strong> — Reincidência 4.1%<br>
+            <span style="font-size: 12px; color: var(--cinza-500);">Acima da meta (&lt;3%) · 3 semanas consecutivas</span>
+          </div>
+          <button class="alert-action">Ver análise</button>
+        </div>
+
+        <div class="alert-item warn">
+          <div class="alert-icon">📊</div>
+          <div class="alert-text">
+            <strong>Pedro Costa</strong> — 6 dias abaixo da meta<br>
+            <span style="font-size: 12px; color: var(--cinza-500);">Limite: 6 dias · Próximo dia ativa crítico</span>
+          </div>
+          <button class="alert-action">Ver análise</button>
+        </div>
+
+        <div class="alert-item warn">
+          <div class="alert-icon">📍</div>
+          <div class="alert-text">
+            <strong>Zona Bela Vista, Setúbal</strong> — 7 avarias repetidas<br>
+            <span style="font-size: 12px; color: var(--cinza-500);">Últimos 7 dias · Possível problema de infraestrutura</span>
+          </div>
+          <button class="alert-action">Ver análise</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">
+          ✅ Resolvidos Recentemente
+          <span class="badge verde">5</span>
+        </div>
+
+        <div class="alert-item ok">
+          <div class="alert-icon">✓</div>
+          <div class="alert-text">
+            <strong>Ana Rodrigues</strong> — Resolvido em 18/09
+          </div>
+        </div>
+
+        <div class="alert-item ok">
+          <div class="alert-icon">✓</div>
+          <div class="alert-text">
+            <strong>Zona Leiria</strong> — Resolvido em 15/09
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- TELA 7: UPLOAD                                -->
+<!-- ============================================ -->
+<div class="screen" id="tela7">
+  <div class="app-layout">
+    <aside class="app-sidebar">
+      <div class="sidebar-logo">📡 TELECOM</div>
+      <ul class="sidebar-menu">
+        <li><a>📊 Dashboard</a></li>
+        <li><a>📈 Análise</a></li>
+        <li><a>👤 Técnicos</a></li>
+        <li><a>🚨 Alertas</a></li>
+        <li><a class="active">📤 Upload</a></li>
+        <li><a>⚙️ Admin</a></li>
+      </ul>
+    </aside>
+
+    <main class="app-main">
+      <div class="app-header">
+        <div class="app-header-left">
+          <h1>Carregar Dados</h1>
+          <p>Importe planilhas do InstalCare</p>
+        </div>
+        <div class="app-header-right">
+          <div class="user-badge">
+            <div class="user-avatar">MR</div>
+            <span>Michael R.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">Tipo de upload</div>
+        <div class="radio-group">
+          <div class="radio-option active">📥 Fecho Diário</div>
+          <div class="radio-option">📚 Carga Histórica</div>
+          <div class="radio-option">👥 Técnicos/Supervisores</div>
+          <div class="radio-option">⭐ Avaliações</div>
+        </div>
+
+        <div class="upload-zone">
+          <div class="upload-icon">📁</div>
+          <div class="upload-title">Arraste o ficheiro aqui</div>
+          <div class="upload-sub">ou clique para escolher · Formatos: .csv, .xlsx</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">✅ Ficheiro processado</div>
+
+        <div style="background: #F0FDF4; padding: 16px; border-radius: 8px; border-left: 4px solid var(--verde); margin-bottom: 16px;">
+          <strong>export_22set.xlsx</strong>
+          <div style="font-size: 13px; color: var(--cinza-700); margin-top: 8px;">
+            📊 Instalações: <strong>92 linhas</strong><br>
+            🔧 Avarias: <strong>15 linhas</strong><br>
+            🔒 Anonimização: <strong>nomes e moradas removidos</strong><br>
+            📅 Data de referência: <strong>22/09/2026</strong>
+          </div>
+        </div>
+
+        <div class="panel-title" style="font-size: 14px;">🚨 OS agendadas que não foram encontradas</div>
+
+        <div class="alert-item crit">
+          <div class="alert-icon">🚫</div>
+          <div class="alert-text">
+            <strong>ID 178945</strong> — Status anterior: Scheduled
+          </div>
+          <button class="alert-action">Justificar</button>
+        </div>
+
+        <div class="alert-item crit">
+          <div class="alert-icon">🚫</div>
+          <div class="alert-text">
+            <strong>ID 178912</strong> — Status anterior: Assigned
+          </div>
+          <button class="alert-action">Justificar</button>
+        </div>
+
+        <div style="margin-top: 24px; display: flex; gap: 12px;">
+          <button class="btn-primary" style="width: auto; padding: 12px 24px;">✓ Confirmar e Guardar</button>
+          <button style="background: white; border: 1px solid var(--cinza-200); padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer;">Cancelar</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- TELA 8: ADMINISTRAÇÃO                         -->
+<!-- ============================================ -->
+<div class="screen" id="tela8">
+  <div class="app-layout">
+    <aside class="app-sidebar">
+      <div class="sidebar-logo">📡 TELECOM</div>
+      <ul class="sidebar-menu">
+        <li><a>📊 Dashboard</a></li>
+        <li><a>📈 Análise</a></li>
+        <li><a>👤 Técnicos</a></li>
+        <li><a>🚨 Alertas</a></li>
+        <li><a>📤 Upload</a></li>
+        <li><a class="active">⚙️ Admin</a></li>
+      </ul>
+    </aside>
+
+    <main class="app-main">
+      <div class="app-header">
+        <div class="app-header-left">
+          <h1>Administração</h1>
+          <p>Gestão de utilizadores, metas e auditoria</p>
+        </div>
+        <div class="app-header-right">
+          <div class="user-badge">
+            <div class="user-avatar">MR</div>
+            <span>Michael R.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">
+          👥 Utilizadores
+          <button class="alert-action">+ Convidar utilizador</button>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Papel</th>
+              <th>Estado</th>
+              <th style="text-align: right;">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>jose@digi.pt</td>
+              <td><span class="badge azul">Supervisor</span></td>
+              <td><span class="badge verde">Ativo</span></td>
+              <td style="text-align: right;"><a class="link">Editar</a></td>
+            </tr>
+            <tr>
+              <td>maria@digi.pt</td>
+              <td><span class="badge azul">Supervisor</span></td>
+              <td><span class="badge laranja">Pendente</span></td>
+              <td style="text-align: right;"><a class="link">Reenviar convite</a></td>
+            </tr>
+            <tr>
+              <td>carlos@digi.pt</td>
+              <td><span class="badge cinza">Coordenador</span></td>
+              <td><span class="badge verde">Ativo</span></td>
+              <td style="text-align: right;"><a class="link">Editar</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">🎯 Metas e Limites</div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label">Meta diária de instalações</label>
+            <input type="number" class="form-input" value="4">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Meta de reincidência (%)</label>
+            <input type="number" class="form-input" value="3">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Dias mínimos de contrato</label>
+            <input type="number" class="form-input" value="12">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Limite dias abaixo da meta</label>
+            <input type="number" class="form-input" value="6">
+          </div>
+        </div>
+
+        <button class="btn-primary" style="width: auto; padding: 12px 24px; margin-top: 16px;">Guardar alterações</button>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">
+          🔍 Logs de Auditoria
+          <span class="panel-title-sub">Últimas 24h</span>
+        </div>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Data/Hora</th>
+              <th>Utilizador</th>
+              <th>Ação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>22/09 10:15</td>
+              <td>jose@digi.pt</td>
+              <td>Login</td>
+            </tr>
+            <tr>
+              <td>22/09 10:16</td>
+              <td>jose@digi.pt</td>
+              <td>Ver perfil de Carlos M.</td>
+            </tr>
+            <tr>
+              <td>22/09 10:20</td>
+              <td>jose@digi.pt</td>
+              <td>Exportar PDF</td>
+            </tr>
+            <tr>
+              <td>22/09 11:03</td>
+              <td>maria@digi.pt</td>
+              <td>Upload de planilha</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title">💾 Backup</div>
+        <div style="display: flex; gap: 12px;">
+          <button style="background: white; border: 1px solid var(--cinza-200); padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">📥 Exportar dados</button>
+          <button style="background: white; border: 1px solid var(--cinza-200); padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer;">📤 Restaurar backup</button>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- JAVASCRIPT                                     -->
+<!-- ============================================ -->
+<script>
+  function showScreen(id, btn) {
+    // Esconde todas as telas
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    // Mostra a tela escolhida
+    document.getElementById(id).classList.add('active');
+    // Atualiza botão ativo
+    document.querySelectorAll('.wf-nav button').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    // Scroll para o topo
+    window.scrollTo(0, 0);
+  }
+
+  function toggleDark() {
+    document.body.classList.toggle('dark');
+    const btn = document.querySelector('.wf-toggle');
+    btn.textContent = document.body.classList.contains('dark') ? '☀️ Light' : '🌙 Dark';
+  }
+
+  // Ativa interatividade dos radios (visual)
+  document.querySelectorAll('.radio-group').forEach(group => {
+    group.querySelectorAll('.radio-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        group.querySelectorAll('.radio-option').forEach(o => o.classList.remove('active'));
+        opt.classList.add('active');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
