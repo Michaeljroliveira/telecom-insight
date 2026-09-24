@@ -3,6 +3,10 @@ import { createClient } from "@/lib/supabase/server";
 export default async function Home() {
   const supabase = await createClient();
 
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "NÃO DEFINIDO";
+  const keyPreview =
+    (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "").slice(0, 20) + "...";
+
   const { data: tecnicos, error, count } = await supabase
     .from("tecnicos")
     .select("*", { count: "exact" });
@@ -15,27 +19,26 @@ export default async function Home() {
           <p className="text-xl opacity-90">Plataforma de gestão operacional</p>
         </header>
 
-        {/* DEBUG — remover depois */}
         <div className="bg-black/30 border border-yellow-300 rounded-xl p-4 mb-6 text-sm">
           <p className="font-bold text-yellow-300 mb-2">🔍 DEBUG:</p>
-          <p>Count: {count ?? "null"}</p>
-          <p>Length: {tecnicos?.length ?? "null"}</p>
-          <p>Error: {error?.message ?? "nenhum"}</p>
-          <details className="mt-2">
-            <summary className="cursor-pointer">Ver dados crus</summary>
-            <pre className="mt-2 text-xs overflow-auto max-h-64">
-              {JSON.stringify(tecnicos, null, 2)}
-            </pre>
-          </details>
+          <p className="break-all">
+            <strong>URL:</strong> {supabaseUrl}
+          </p>
+          <p className="break-all">
+            <strong>Key (início):</strong> {keyPreview}
+          </p>
+          <p>
+            <strong>Count:</strong> {count ?? "null"}
+          </p>
+          <p>
+            <strong>Error:</strong> {error?.message ?? "nenhum"}
+          </p>
         </div>
 
         <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-8">
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold">👥 Técnicos</h2>
-            <span className="bg-white/20 px-4 py-2 rounded-full text-sm font-bold">
-              {tecnicos?.length || 0} registos
-            </span>
-          </div>
+          <h2 className="text-2xl font-bold mb-6">
+            👥 Técnicos ({tecnicos?.length || 0})
+          </h2>
 
           {tecnicos && tecnicos.length > 0 ? (
             <div className="grid gap-3">
@@ -46,9 +49,6 @@ export default async function Home() {
                 >
                   <p className="font-bold text-lg">{tecnico.nome}</p>
                   <p className="text-sm opacity-70">{tecnico.email}</p>
-                  <p className="text-xs opacity-50 mt-1">
-                    ativo: {String(tecnico.ativo)} | tipo: {tecnico.tipo_contrato}
-                  </p>
                 </div>
               ))}
             </div>
