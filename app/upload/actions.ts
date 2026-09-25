@@ -1,3 +1,4 @@
+export const maxDuration = 60; // 60 segundos máximo
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
